@@ -1,9 +1,7 @@
 package syncronzr.api.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import jakarta.persistence.*;
 
 import java.sql.Date;
 
@@ -13,44 +11,21 @@ public class User {
     @GeneratedValue
     private long Id;
     @Column(nullable = false)
-    private String name;
+    private String Name;
     @Column(nullable = false)
-    private String lastName;
+    private String Surname;
     @Column(unique = true, nullable = false)
-    private String email;
+    private String Email;
     @Column(unique = true, nullable = false)
-    private String phone;
-    @Column(unique = true, nullable = false)
-    private String cpf;
-
-    private Date dateBirth;
-
+    private String Phone;
     @Column(nullable = false)
-    private String password;
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
+    private String Password;
+    @Column(nullable = true)
+    @JsonFormat(shape = JsonFormat.Shape.STRING)
+    private Date DateBirth;
+    @ManyToOne
+    @JoinColumn(nullable = false)
+    private UserType UserType;
 
     public long getId() {
         return Id;
@@ -60,35 +35,59 @@ public class User {
         Id = id;
     }
 
+    public String getName() {
+        return Name;
+    }
+
+    public void setName(String name) {
+        Name = name;
+    }
+
+    public String getSurname() {
+        return Surname;
+    }
+
+    public void setSurname(String lastName) {
+        Surname = lastName;
+    }
+
+    public String getEmail() {
+        return Email;
+    }
+
+    public void setEmail(String email) {
+        Email = email;
+    }
+
     public String getPhone() {
-        return phone;
+        return Phone;
     }
 
     public void setPhone(String phone) {
-        this.phone = phone;
+        Phone = phone;
     }
 
-    public Date getDateBirth() {
-        return dateBirth;
+    public UserType getUserType() {
+        return UserType;
     }
 
-    public void setDateBirth(Date dateBirth) {
-        this.dateBirth = dateBirth;
+    public void setUserType(UserType userType) {
+        UserType = userType;
     }
 
     public String getPassword() {
-        return password;
-    }
-
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
+        return Password;
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        Password = password;
+    }
+
+    public Date getDateBirth() {
+        return DateBirth;
+    }
+
+    public void setDateBirth(Date dateBirth) {
+        DateBirth = dateBirth;
     }
 }

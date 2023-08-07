@@ -18,7 +18,7 @@ public class UserController {
     @Autowired
     private UserService _userService;
 
-    @RequestMapping(value = "/users", method = RequestMethod.GET)
+    @RequestMapping(value = "/user", method = RequestMethod.GET)
     public List<User> Get() {
 
         return _userService.get();
