@@ -25,7 +25,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "/user/{id}", method = RequestMethod.GET)
-    public ResponseEntity<User> GetById(@PathVariable(value = "id") long id)
+    public ResponseEntity<User> GetById(@PathVariable(value = "id") Integer id)
     {
         Optional<User> user = _userService.getById(id);
         if(user.isPresent())
