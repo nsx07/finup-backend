@@ -1,8 +1,9 @@
 # Default ignored files
 /shelf/
 idea/*
-*.xml
-./.idea
+.idea
+/.idea
 
-api/target
+target
+/target
 
