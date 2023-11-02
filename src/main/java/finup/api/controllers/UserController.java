@@ -12,20 +12,19 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
-@RestController
+@RestController(value = "user")
 public class UserController {
 
     @Autowired
     private UserService _userService;
 
-    @RequestMapping(value = "/user", method = RequestMethod.GET)
+    @RequestMapping(value = "user/getAll", method = RequestMethod.GET)
     public List<User> Get() {
-
         return _userService.get();
     }
 
-    @RequestMapping(value = "/user/{id}", method = RequestMethod.GET)
-    public ResponseEntity<User> GetById(@PathVariable(value = "id") Integer id)
+    @RequestMapping(value = "user/getById/{id}", method = RequestMethod.GET)
+    public ResponseEntity<User> GetById(@PathVariable(value = "id") Long id)
     {
         Optional<User> user = _userService.getById(id);
         if(user.isPresent())
@@ -34,13 +33,13 @@ public class UserController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @RequestMapping(value = "/user", method =  RequestMethod.POST)
+    @RequestMapping(value = "user/save", method =  RequestMethod.POST)
     public Boolean Post(@Validated @RequestBody User user)
     {
         return _userService.save(user);
     }
 
-    @RequestMapping(value = "/user", method =  RequestMethod.PUT)
+    @RequestMapping(value = "user/update", method =  RequestMethod.PUT)
     public Boolean Put(@Validated @RequestBody User user)
     {
         return _userService.update(user.getId(), user);

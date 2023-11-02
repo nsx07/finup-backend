@@ -1,5 +1,7 @@
 package finup.api.utils;
 
-public class ApiConfiguration {
 
+
+
+public class ApiConfiguration {
 }

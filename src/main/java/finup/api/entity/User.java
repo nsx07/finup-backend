@@ -10,10 +10,12 @@ import java.sql.Date;
 
 @Getter
 @Setter
+@Entity
+@Table(name = "users")
 public class User {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private Integer Id;
+    private Long Id;
 
     private String Name;
     private String Email;

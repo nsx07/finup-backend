@@ -1,5 +1,6 @@
 package finup.api.services;
 
+import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
+@Getter
 @Service
 public abstract class BaseService<TEntity, TKey, TRepository extends JpaRepository<TEntity, TKey>>  {
 
@@ -17,10 +19,6 @@ public abstract class BaseService<TEntity, TKey, TRepository extends JpaReposito
 
     @Autowired
     public BaseService() {
-    }
-
-    public TRepository getRepository() {
-        return repository;
     }
 
     public List<TEntity> get() {
@@ -56,7 +54,7 @@ public abstract class BaseService<TEntity, TKey, TRepository extends JpaReposito
         }
     }
 
-    public Boolean deleteById(TKey id) {
+    public Boolean delete(TKey id) {
         try {
             repository.deleteById(id);
             return true;

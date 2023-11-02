@@ -12,19 +12,7 @@ import javax.security.auth.kerberos.EncryptionKey;
 import java.security.CryptoPrimitive;
 
 @Service
-public class UserService extends BaseService<User, Integer, UserRepository> {
-
+public class UserService extends BaseService<User, Long, UserRepository> {
     @Autowired
-    public UserService() {
-    }
-
-    @Override
-    public Boolean save(User user) {
-        return super.save(user);
-    }
-
-    @Override
-    public Boolean update(Integer id, User user) {
-        return super.update(id, user);
-    }
+    public UserService() { }
 }
