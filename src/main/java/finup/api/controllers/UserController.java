@@ -45,4 +45,10 @@ public class UserController {
         return _userService.update(user.getId(), user);
     }
 
+    @RequestMapping(value="user/delete/{id}", method = RequestMethod.DELETE)
+    public boolean Delete(@PathVariable(value = "id") Long id)
+    {
+        return _userService.delete(id);
+    }
+
 }

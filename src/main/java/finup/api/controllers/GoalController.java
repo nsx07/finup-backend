@@ -43,4 +43,10 @@ public class GoalController {
         return _goalService.update(goal.getId(), goal);
     }
 
+    @RequestMapping(value = "goal/delete/{id}", method =  RequestMethod.DELETE)
+    public Boolean Delete(@PathVariable(value = "id") Long id)
+    {
+        return _goalService.delete(id);
+    }
+
 }

@@ -44,4 +44,10 @@ public class BillController {
         return _billService.update(bill.getId(), bill);
     }
 
+    @RequestMapping(value = "bill/delete/{id}", method =  RequestMethod.DELETE)
+    public Boolean Delete(@PathVariable(value = "id") Long id)
+    {
+        return _billService.delete(id);
+    }
+
 }
