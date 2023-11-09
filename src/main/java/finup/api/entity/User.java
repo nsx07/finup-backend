@@ -7,12 +7,12 @@ import lombok.Setter;
 
 import java.sql.Date;
 
-
 @Getter
 @Setter
 @Entity
 @Table(name = "users")
 public class User {
+
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long Id;
