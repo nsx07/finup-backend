@@ -10,18 +10,18 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
-@RestController(value = "goal")
+@RestController(value = "api/goal")
 public class GoalController {
 
     @Autowired
     private GoalService _goalService;
 
-    @RequestMapping(value = "goal/getAll", method = RequestMethod.GET)
+    @RequestMapping(value = "api/goal/getAll", method = RequestMethod.GET)
     public List<Goal> Get() {
         return _goalService.get();
     }
 
-    @RequestMapping(value = "goal/getById/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "api/goal/getById/{id}", method = RequestMethod.GET)
     public ResponseEntity<Goal> GetById(@PathVariable(value = "id") Long id)
     {
         Optional<Goal> goal = _goalService.getById(id);
@@ -31,19 +31,19 @@ public class GoalController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @RequestMapping(value = "goal/save", method =  RequestMethod.POST)
+    @RequestMapping(value = "api/goal/save", method =  RequestMethod.POST)
     public Boolean Post(@Validated @RequestBody Goal goal)
     {
         return _goalService.save(goal);
     }
 
-    @RequestMapping(value = "goal/update", method =  RequestMethod.PUT)
+    @RequestMapping(value = "api/goal/update", method =  RequestMethod.PUT)
     public Boolean Put(@Validated @RequestBody Goal goal)
     {
         return _goalService.update(goal.getId(), goal);
     }
 
-    @RequestMapping(value = "goal/delete/{id}", method =  RequestMethod.DELETE)
+    @RequestMapping(value = "api/goal/delete/{id}", method =  RequestMethod.DELETE)
     public Boolean Delete(@PathVariable(value = "id") Long id)
     {
         return _goalService.delete(id);

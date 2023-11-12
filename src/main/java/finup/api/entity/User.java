@@ -1,6 +1,9 @@
 package finup.api.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonValue;
+import com.fasterxml.jackson.annotation.JsonView;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -20,6 +23,8 @@ public class User {
     private String Name;
     private String Email;
     private String Password;
-    private Date DateBirth;
+
+    @JsonFormat(shape = JsonFormat.Shape.STRING)
+    private Date dateBirth;
 
 }
