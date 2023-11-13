@@ -388,3 +388,6 @@ org.h2.jdbc.JdbcSQLNonTransientConnectionException: Database is already closed (
 	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.base/java.lang.Thread.run(Thread.java:840)
+2023-11-13 18:55:53 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "GOAL" not found; SQL statement:
+select g1_0.id,g1_0.amount,g1_0.description,g1_0.finish_date,g1_0.name,g1_0.start_date,g1_0.status from goal g1_0 [42102-214]

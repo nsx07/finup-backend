@@ -40,21 +40,12 @@ public class AuthController {
 
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword()));
         if (authentication.isAuthenticated()) {
-            return ResponseEntity.ok(AuthResponse.logged(jwtService.generateToken(request.getUsername())));
+            return ResponseEntity.ok(AuthResponse.logged(jwtService.generateToken(user.get())));
         }
 
         return ResponseEntity.internalServerError().body(new AuthResponse(null, "Servidor falhou em logar usuário"));
     }
 
-    @PostMapping("/generateToken")
-    public String authenticateAndGetToken(@RequestBody AuthRequest authRequest) {
-        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword()));
-        if (authentication.isAuthenticated()) {
-            return jwtService.generateToken(authRequest.getUsername());
-        } else {
-            throw new UsernameNotFoundException("invalid user request !");
-        }
-    }
 
 
 }
