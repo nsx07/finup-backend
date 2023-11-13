@@ -26,7 +26,7 @@ public class JwtService {
 
         claims.put("email", user.getEmail());
         claims.put("name", user.getName());
-        claims.put("dateBirth", user.getDateBirth());
+        claims.put("dateBirth", user.getDateBirth().toString());
 
         return createToken(claims, user.getEmail());
     }

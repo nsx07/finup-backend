@@ -40,9 +40,10 @@ public class AuthController {
 
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword()));
         if (authentication.isAuthenticated()) {
-            return ResponseEntity.ok(AuthResponse.logged(jwtService.generateToken(user.get())));
+            try {
+                return ResponseEntity.ok(AuthResponse.logged(jwtService.generateToken(user.get())));
+            } catch (Exception ignored) { }
         }
-
         return ResponseEntity.internalServerError().body(new AuthResponse(null, "Servidor falhou em logar usuário"));
     }
 
