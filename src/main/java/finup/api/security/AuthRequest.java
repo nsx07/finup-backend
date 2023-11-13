@@ -9,7 +9,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Setter
 public class AuthRequest {
 
-    private String username;
-    private String password;
+    public String username;
+    public String password;
 
 }

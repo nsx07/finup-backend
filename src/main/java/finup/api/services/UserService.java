@@ -48,7 +48,9 @@ public class UserService extends BaseService<User, Long, UserRepository> impleme
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
         Optional<User> user = getRepository().getByEmail(username);
-        return user.map(value -> new UserDetailsInfo(value.getEmail(), value.getPassword(), null)).orElse(null);
 
+        return user.isEmpty()
+                ? null
+                : new UserDetailsInfo(user.get().getPassword(), user.get().getEmail(), null);
     }
 }
