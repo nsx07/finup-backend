@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 import javax.crypto.Cipher;
 import javax.security.auth.kerberos.EncryptionKey;
 import java.security.CryptoPrimitive;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -42,6 +43,19 @@ public class UserService extends BaseService<User, Long, UserRepository> impleme
     public Boolean save(User entity) {
         entity.setPassword(passwordEncoder.encode(entity.getPassword()));
         return super.save(entity);
+    }
+    @Override
+    public Boolean update(Long id, User entity) {
+        String password = entity.getPassword();
+
+        if (Objects.equals(entity.getPassword(), "")) {
+            password = getRepository().getReferenceById(id).getPassword();
+            entity.setPassword(password);
+        } else{
+            entity.setPassword(passwordEncoder.encode(password));
+        }
+
+        return super.update(entity.getId(), entity);
     }
 
     @Override
